@@ -3,59 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Jack-o%27-Lantern_2010.jpg/640px-Jack-o%27-Lantern_2010.jpg" type="image/jpg">
-    <title>El Lugar de los Secretos</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Notepad_and_pen_icon.svg/1024px-Notepad_and_pen_icon.svg.png" type="image/png">
+    <title>El Buzón Confidencial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Nosifier&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+
     <style>
-        /* Animación de fondo (Ajustada para colores más oscuros y misteriosos) */
+        /* Paleta de Colores de Chisme Rosa/Morado */
+        :root {
+            --primary-pink: #FF69B4; /* Rosa Caliente (Titulares) */
+            --secondary-purple: #8A2BE2; /* Azul Violeta (Acentos) */
+            --background-light: #FCE4EC; /* Rosa Muy Pálido */
+            --button-dark: #A020F0; /* Morado Vibrante */
+            --text-color: #333333;
+        }
+
+        /* Animación de fondo: Degradado de Rosas y Morados suaves */
         @keyframes movingGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Animación de Título (más sutil, como un escalofrío) */
-        @keyframes shiver {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(-2px, 1px) rotate(0.5deg); }
-            50% { transform: translate(2px, -1px) rotate(-0.5deg); }
-            75% { transform: translate(-2px, 1px) rotate(0.5deg); }
+        /* Animación de Título: Brillo de Neon Pink */
+        @keyframes neonGlow {
+            0%, 100% { color: var(--primary-pink); text-shadow: 0 0 8px var(--primary-pink); }
+            50% { color: #FFFFFF; text-shadow: 0 0 20px var(--primary-pink), 0 0 30px var(--secondary-purple); }
         }
-        
-        /* Animación para el botón (ahora con un brillo verde neón) */
-        @keyframes buttonGlow {
-            0% { transform: scale(1); box-shadow: 0 0 8px #9DFF20; } /* Verde neón */
-            50% { transform: scale(1.02); box-shadow: 0 0 20px #9DFF20, 0 0 30px #9DFF20; }
-            100% { transform: scale(1); box-shadow: 0 0 8px #9DFF20; }
+
+        /* Animación para el botón: Pulso de "Exclusiva" */
+        @keyframes scoopPulse {
+            0% { transform: scale(1); box-shadow: 0 0 10px var(--button-dark); }
+            50% { transform: scale(1.02); box-shadow: 0 0 20px var(--button-dark), 0 0 30px var(--primary-pink); }
+            100% { transform: scale(1); box-shadow: 0 0 10px var(--button-dark); }
         }
-        
+
         /* === ESTILOS BASE DE PÁGINA ÚNICA === */
         body {
-            font-family: 'Nosifier', cursive;
-            background: linear-gradient(135deg, #0f0f0f, #220022, #0f0f0f, #331133);
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--background-light), #F8BBD0, var(--background-light), #E1BEE7);
             background-size: 400% 400%;
-            animation: movingGradient 25s ease infinite;
+            animation: movingGradient 20s ease infinite;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
             padding: 50px 20px;
             overflow-x: hidden;
-            color: #e0e0e0;
+            color: var(--text-color);
         }
 
         .container {
             width: 100%;
-            max-width: 480px;
-            background-color: rgba(15, 15, 15, 0.95);
-            border-radius: 18px;
-            border: 3px solid #6a0572;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(157, 255, 32, 0.4);
+            max-width: 550px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            border: 5px solid var(--primary-pink);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 105, 180, 0.6);
             padding: 40px;
             box-sizing: border-box;
             position: relative;
@@ -75,24 +82,28 @@
 
         /* === ESTILOS DE TEXTO Y TÍTULOS === */
         h2 {
-            font-family: 'Metal Mania', cursive;
-            font-size: 3.2em;
-            color: #9DFF20;
-            text-shadow: 
-                -2px -2px 0 #5A005A,
-                2px 2px 0 #5A005A,
-                4px 4px 5px rgba(0,0,0,0.8);
-            margin-bottom: 15px;
-            animation: shiver 4s infinite ease-in-out;
+            font-family: 'Bangers', cursive;
+            font-size: 3.8em;
+            color: var(--primary-pink);
+            text-shadow:
+                -1px -1px 0 #000000,
+                1px 1px 0 #000000,
+                2px 2px 5px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            animation: neonGlow 3s infinite ease-in-out;
+            line-height: 1;
         }
 
         .invitation-message {
-            font-family: 'Creepster', cursive;
-            font-size: 1.4em;
-            color: #ff9900;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #666666;
             margin-bottom: 25px;
-            line-height: 1.4;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            line-height: 1.5;
+            padding: 10px;
+            border-left: 5px solid var(--secondary-purple); /* Borde morado de 'confidencial' */
+            background-color: #f7f7ff;
         }
 
         form {
@@ -104,34 +115,36 @@
         }
 
         label {
-            font-family: 'Nosifier', cursive;
-            font-size: 1.3em;
-            color: #f1c40f;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2em;
+            color: var(--button-dark);
+            font-weight: bold;
+            text-transform: uppercase;
             margin-top: 15px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            text-shadow: 0 1px 1px rgba(255,255,255,0.9);
         }
 
         /* === ESTILOS DEL CAMPO DE TEXTO LARGO (TEXTAREA) === */
         textarea {
             width: 95%;
-            padding: 18px;
-            border: 2px solid #5A005A;
-            border-radius: 12px;
-            background: #111111;
-            color: #e0e0e0;
+            padding: 15px;
+            border: 3px dashed var(--secondary-purple);
+            border-radius: 8px;
+            background: #fcfcfc;
+            color: var(--text-color);
             font-size: 1.1em;
-            font-family: 'Nosifier', cursive;
-            transition: all 0.4s ease;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
             resize: vertical;
-            min-height: 180px;
+            min-height: 150px;
             box-sizing: border-box;
-            box-shadow: inset 0 0 8px rgba(0,0,0,0.7);
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
         }
 
         textarea:focus {
             outline: none;
-            border-color: #9DFF20;
-            box-shadow: 0 0 15px rgba(157, 255, 32, 0.9), inset 0 0 8px rgba(0,0,0,0.9);
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.7), inset 0 0 5px rgba(0,0,0,0.2);
         }
 
         /* === ESTILO DEL BOTÓN DE ENVÍO === */
@@ -139,65 +152,65 @@
             margin-top: 30px;
             width: 100%;
             padding: 18px;
-            background: #7B0099;
-            color: #e0e0e0;
+            background: var(--button-dark);
+            color: #FFFFFF;
             border: none;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 1.4em;
-            font-family: 'Creepster', cursive;
+            font-size: 1.5em;
+            font-family: 'Bangers', cursive;
             font-weight: bold;
             letter-spacing: 2px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
-            transition: all 0.4s ease;
-            animation: buttonGlow 2.5s infinite ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            animation: scoopPulse 2s infinite ease-in-out;
         }
 
         #confirm-button:hover {
-            background: #9DFF20;
-            color: #111111;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(157, 255, 32, 0.9), 0 0 25px rgba(157, 255, 32, 0.7);
+            background: var(--primary-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(255, 105, 180, 0.8);
         }
 
         /* === ESTILOS ESPECÍFICOS DE PÁGINA FINAL === */
         .final-page {
-            border-color: #FF00FF; /* Borde más llamativo para la confirmación */
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 0, 255, 0.5); /* Brillo magenta */
+            border-color: #4CAF50;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3), 0 0 20px rgba(76, 175, 80, 0.5);
         }
         .final-page h3 {
-            font-family: 'Metal Mania', cursive;
-            font-size: 3.5em; /* Más grande aún */
-            color: #FF00FF; /* Magenta neón */
-            text-shadow: 3px 3px 0px #5A005A, 6px 6px 12px rgba(0,0,0,0.9); /* Sombra más profunda */
-            margin-bottom: 25px; /* Más espacio */
+            font-family: 'Bangers', cursive;
+            font-size: 3.5em;
+            color: #4CAF50;
+            text-shadow: 2px 2px 0px #333, 4px 4px 8px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
         }
         .final-page p {
-            font-family: 'Creepster', cursive; /* Fuente Creepster para los párrafos */
-            font-size: 1.6em; /* Párrafos más grandes */
-            color: #ff9900; /* Naranja quemado */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-            margin-bottom: 15px; /* Más espacio entre párrafos */
-            line-height: 1.5; /* Mejor legibilidad */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            color: var(--text-color);
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
-        .final-page p:last-of-type { /* Último párrafo con color diferente */
-            color: #9DFF20; /* Verde neón para el agradecimiento */
-            font-size: 1.8em; /* Aún más grande */
-            text-shadow: 2px 2px 3px rgba(0,0,0,0.8);
+        .final-page p:last-of-type {
+            color: var(--primary-pink);
+            font-size: 1.6em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
         .final-page img {
-            width: 160px; /* Imagen ligeramente más grande */
-            margin-bottom: 30px; /* Más margen */
-            filter: drop-shadow(0 0 20px rgba(255, 0, 255, 0.8)); /* Brillo magenta en la imagen */
-            animation: floatArrow 3s ease-in-out infinite; /* Animación flotante al icono */
+            width: 150px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.7));
+            animation: floatArrow 3s ease-in-out infinite;
         }
-        @keyframes floatArrow { /* Reutilizando la animación para el icono de la página final */
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
+        @keyframes floatArrow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* === ESTILOS CONFETI/FONDO === */
+        /* === ESTILOS CONFETI/FONDO (Colores de Chisme Rosa/Morado) === */
         canvas {
             position: fixed;
             top: 0;
@@ -215,29 +228,29 @@
 
 <div class="container" id="mainContent">
     <div class="contenido">
-        <h2>El Lugar de los Secretos</h2>
+        <h2>¡El Rumor Es Secreto!</h2>
         <p class="invitation-message">
-            ¿Qué secretos esconde tu alma? Susurra tu tormento más oscuro o tu historia más escalofriante al abismo... ¡nadie sabrá que fuiste tú!
+            ¿Sabes algo que nadie más sabe? Susurra ese <strong>jugoso chisme</strong> o esa verdad oculta al anonimato. ¡Tu identidad está completamente asegurada!
         </p>
-        
+
         <form id="miFormulario">
-            <label for="mensaje">¿Qué te ha pasado?</label>
-            <textarea id="mensaje" name="mensaje" rows="8" required placeholder="Escribe tu mensaje misterioso aquí..."></textarea>
-            
+            <label for="mensaje">El Chisme Confidencial:</label>
+            <textarea id="mensaje" name="mensaje" rows="7" required placeholder="Escribe el chisme más candente que conoces..."></textarea>
+
             <button type="submit" id="confirm-button">
-                Enviar Mensaje Fantasmal <i class="fas fa-skull-crossbones"></i> 
-</button>
+                Enviar Mensaje Secreto </i>
+            </button>
         </form>
     </div>
 </div>
 
 <div class="container final-page hidden" id="finalPage">
     <div class="contenido">
-        <img src="fantasma.png" alt="Fantasma" style="width: 150px; margin-bottom: 20px;">
-        <h3>¡El Secreto Fue Consumido!</h3>
-        <p>Tu tormento se desvaneció en la niebla.</p>
-        <p>¡El velo del anonimato lo cubrió todo!</p>
-        <p>¡Gracias por liberar tu alma de su carga!</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_mark_icon.svg/512px-Check_mark_icon.svg.png" alt="Check" style="width: 150px; margin-bottom: 20px;">
+        <h3>¡El Secreto Fue Guardado!</h3>
+        <p>El rumor ha sido depositado en nuestra caja fuerte.</p>
+        <p>¡Gracias por compartir la verdad oculta!</p>
+        <p style="color: var(--primary-pink); font-size: 1.6em;">¡El anonimato triunfa!</p>
     </div>
 </div>
 
@@ -245,14 +258,15 @@
 // TU URL DE GOOGLE APPS SCRIPT
 const URL_DE_TU_SCRIPT = "https://script.google.com/macros/s/AKfycbxeYWIvJuldFj4n_IMo7MPFrmXH-wuIBbFJZ4jylPyw-cZk1JFmDQlsKsV-6Qy3SOTI/exec";
 
-// === LÓGICA DE CONFETI ===
+// === LÓGICA DE CONFETI (Colores de Chisme Rosa/Morado) ===
 const canvasGeneral = document.getElementById("confetti");
 const ctxGeneral = canvasGeneral.getContext("2d");
 canvasGeneral.width = window.innerWidth;
 canvasGeneral.height = window.innerHeight;
 
 let confettisGeneral = [];
-const halloweenColors = ["#9DFF20", "#FF00FF", "#6A0572", "#FF7F00", "#FF0000", "#5A005A", "#f1c40f"]; 
+// Colores de chisme Rosa/Morado: Rosa Caliente, Morado, Blanco, Plata
+const gossipColors = ["#FF69B4", "#8A2BE2", "#FFFFFF", "#C0C0C0", "#A020F0"];
 
 for (let i = 0; i < 120; i++) {
     confettisGeneral.push({
@@ -260,7 +274,7 @@ for (let i = 0; i < 120; i++) {
         y: Math.random() * canvasGeneral.height,
         r: Math.random() * 6 + 2,
         d: Math.random() * 0.05 + 0.02,
-        color: halloweenColors[Math.floor(Math.random() * halloweenColors.length)]
+        color: gossipColors[Math.floor(Math.random() * gossipColors.length)]
     });
 }
 
@@ -287,7 +301,7 @@ function updateConfettiGeneral() {
 
 setInterval(drawConfettiGeneral, 20);
 
-// === LÓGICA DE ENVÍO DE FORMULARIO ===
+// === LÓGICA DE ENVÍO DE FORMULARIO (Se mantiene la lógica original) ===
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById("miFormulario");
     const mainContent = document.getElementById("mainContent");
@@ -295,24 +309,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener("submit", function(e) {
         e.preventDefault();
-        
+
         let datos = {
-            mensaje: e.target.mensaje.value 
+            mensaje: e.target.mensaje.value
         };
 
         mainContent.classList.add('hidden');
-        
+
         fetch(URL_DE_TU_SCRIPT, {
             method: "POST",
             body: JSON.stringify(datos)
         })
         .then(res => res.text())
         .then(txt => {
-            finalPage.classList.remove('hidden'); 
+            finalPage.classList.remove('hidden');
             form.reset();
         })
         .catch(err => {
-            alert("¡Error al enviar! El fantasma no pudo entregar el mensaje. Intenta de nuevo.");
+            alert("¡Error al enviar! El secreto no pudo ser entregado. Intenta de nuevo.");
             mainContent.classList.remove('hidden');
             finalPage.classList.add('hidden');
         });

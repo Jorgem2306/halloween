@@ -14,7 +14,7 @@
     <style>
         /* Paleta de Colores de Chisme Rosa/Morado */
         :root {
-            --primary-pink: #FF69B4; /* Rosa Caliente (Titulares) */
+            --primary-pink: #FF69B4; /* Rosa Caliente (Titulares, Carga) */
             --secondary-purple: #8A2BE2; /* Azul Violeta (Acentos) */
             --background-light: #FCE4EC; /* Rosa Muy Pálido */
             --button-dark: #A020F0; /* Morado Vibrante */
@@ -39,6 +39,12 @@
             0% { transform: scale(1); box-shadow: 0 0 10px var(--button-dark); }
             50% { transform: scale(1.02); box-shadow: 0 0 20px var(--button-dark), 0 0 30px var(--primary-pink); }
             100% { transform: scale(1); box-shadow: 0 0 10px var(--button-dark); }
+        }
+        
+        /* Animación de Spinner para la carga */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* === ESTILOS BASE DE PÁGINA ÚNICA === */
@@ -80,6 +86,29 @@
             display: none !important;
         }
 
+        /* === ESTILOS DE CARGA (¡AHORA ROSA!) === */
+        #loadingPage {
+            border-color: var(--secondary-purple); 
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3), 0 0 20px var(--secondary-purple);
+        }
+        #loadingPage h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 3em;
+            /* Título de carga en Rosa Caliente */
+            color: var(--primary-pink); 
+            text-shadow: 2px 2px 0px #333, 4px 4px 8px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+        .spinner {
+            border: 5px solid rgba(138, 43, 226, 0.3);
+            /* Spinner animado en Rosa Caliente */
+            border-top: 5px solid var(--primary-pink); 
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
         /* === ESTILOS DE TEXTO Y TÍTULOS === */
         h2 {
             font-family: 'Bangers', cursive;
@@ -102,8 +131,10 @@
             margin-bottom: 25px;
             line-height: 1.5;
             padding: 10px;
-            border-left: 5px solid var(--secondary-purple); /* Borde morado de 'confidencial' */
+            border-left: 5px solid var(--secondary-purple);
             background-color: #f7f7ff;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         form {
@@ -122,6 +153,8 @@
             text-transform: uppercase;
             margin-top: 15px;
             text-shadow: 0 1px 1px rgba(255,255,255,0.9);
+            width: 95%; 
+            text-align: left;
         }
 
         /* === ESTILOS DEL CAMPO DE TEXTO LARGO (TEXTAREA) === */
@@ -172,17 +205,14 @@
             box-shadow: 0 7px 20px rgba(255, 105, 180, 0.8);
         }
 
-        /* === ESTILOS ESPECÍFICOS DE PÁGINA FINAL (AHORA EN ROSA) === */
+        /* === ESTILOS ESPECÍFICOS DE PÁGINA FINAL === */
         .final-page {
-            /* Cambiado de verde a Rosa Caliente */
             border-color: var(--primary-pink); 
-            /* Sombra en tonos rosados/morados */
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3), 0 0 20px var(--primary-pink);
         }
         .final-page h3 {
             font-family: 'Bangers', cursive;
             font-size: 3.5em;
-            /* Cambiado de verde a Morado Vibrante */
             color: var(--button-dark); 
             text-shadow: 2px 2px 0px #333, 4px 4px 8px rgba(0,0,0,0.5);
             margin-bottom: 25px;
@@ -201,10 +231,8 @@
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
-        
 
-
-        /* === ESTILOS CONFETI/FONDO (Colores de Chisme Rosa/Morado) === */
+        /* === ESTILOS CONFETI/FONDO === */
         canvas {
             position: fixed;
             top: 0;
@@ -224,7 +252,7 @@
     <div class="contenido">
         <h2>¡El Rumor Es Secreto!</h2>
         <p class="invitation-message">
-            ¿Sabes algo que nadie más sabe? Susurra ese <strong>jugoso chisme</strong> o esa verdad oculta al anonimato. ¡Tu identidad está completamente asegurada!
+            ¿Sabes algo que nadie más sabe? Susurra ese **jugoso chisme** o esa verdad oculta al anonimato. ¡Tu identidad está completamente asegurada!
         </p>
 
         <form id="miFormulario">
@@ -232,16 +260,24 @@
             <textarea id="mensaje" name="mensaje" rows="7" required placeholder="Escribe el chisme más candente que conoces..."></textarea>
 
             <button type="submit" id="confirm-button">
-                Enviar Mensaje Secreto </i>
+                Enviar Mensaje Secreto <i class="fas fa-mask"></i>
             </button>
         </form>
     </div>
 </div>
 
+<div class="container hidden" id="loadingPage">
+    <div class="contenido">
+        <div class="spinner"></div>
+        <h3>Cargando el chisme...</h3>
+        <p style="color: var(--secondary-purple); font-style: italic;">Por favor, espera mientras guardamos tu secreto.</p>
+    </div>
+</div>
+
 <div class="container final-page hidden" id="finalPage">
     <div class="contenido">
-        <h3>¡El chisme Fue Guardado!</h3>
-        <p>El chisme ha sido depositado en nuestra caja fuerte.</p>
+        <h3>¡El Secreto Fue Guardado!</h3>
+        <p>El rumor ha sido depositado en nuestra caja fuerte.</p>
         <p>¡Gracias por compartir la verdad oculta!</p>
         <p style="color: var(--primary-pink); font-size: 1.6em;">¡El anonimato triunfa!</p>
     </div>
@@ -251,14 +287,13 @@
 // TU URL DE GOOGLE APPS SCRIPT
 const URL_DE_TU_SCRIPT = "https://script.google.com/macros/s/AKfycbxeYWIvJuldFj4n_IMo7MPFrmXH-wuIBbFJZ4jylPyw-cZk1JFmDQlsKsV-6Qy3SOTI/exec";
 
-// === LÓGICA DE CONFETI (Colores de Chisme Rosa/Morado) ===
+// === LÓGICA DE CONFETI ===
 const canvasGeneral = document.getElementById("confetti");
 const ctxGeneral = canvasGeneral.getContext("2d");
 canvasGeneral.width = window.innerWidth;
 canvasGeneral.height = window.innerHeight;
 
 let confettisGeneral = [];
-// Colores de chisme Rosa/Morado: Rosa Caliente, Morado, Blanco, Plata
 const gossipColors = ["#FF69B4", "#8A2BE2", "#FFFFFF", "#C0C0C0", "#A020F0"];
 
 for (let i = 0; i < 120; i++) {
@@ -294,34 +329,45 @@ function updateConfettiGeneral() {
 
 setInterval(drawConfettiGeneral, 20);
 
-// === LÓGICA DE ENVÍO DE FORMULARIO (Se mantiene la lógica original) ===
+// === LÓGICA DE ENVÍO DE FORMULARIO ===
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById("miFormulario");
     const mainContent = document.getElementById("mainContent");
+    const loadingPage = document.getElementById("loadingPage");
     const finalPage = document.getElementById("finalPage");
 
     form.addEventListener("submit", function(e) {
         e.preventDefault();
 
+        // 1. Ocultar el formulario y mostrar la pantalla de carga
+        mainContent.classList.add('hidden');
+        loadingPage.classList.remove('hidden');
+
         let datos = {
             mensaje: e.target.mensaje.value
         };
-
-        mainContent.classList.add('hidden');
 
         fetch(URL_DE_TU_SCRIPT, {
             method: "POST",
             body: JSON.stringify(datos)
         })
-        .then(res => res.text())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Respuesta no exitosa del servidor.");
+            }
+            return res.text();
+        })
         .then(txt => {
+            // 2. Ocultar la carga y mostrar la página final de éxito
+            loadingPage.classList.add('hidden');
             finalPage.classList.remove('hidden');
             form.reset();
         })
         .catch(err => {
-            alert("¡Error al enviar! El secreto no pudo ser entregado. Intenta de nuevo.");
+            // 3. Ocultar la carga y volver al formulario si hay un error
+            loadingPage.classList.add('hidden'); 
+            alert("¡Error al enviar el chisme! Asegúrate de que el script de Google esté desplegado correctamente como Web App (cualquiera puede acceder). Detalle: " + err.message);
             mainContent.classList.remove('hidden');
-            finalPage.classList.add('hidden');
         });
     });
 });
